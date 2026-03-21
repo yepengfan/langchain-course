@@ -1,8 +1,9 @@
+from datetime import date
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain.tools import tool
-from langchain_core.messages import HumanMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from tavily import TavilyClient
 
@@ -46,7 +47,10 @@ agent = create_agent(model=llm, tools=tools, response_format=AgentResponse)
 
 def main():
     query = "What is the weather in Tokyo tomorrow?"
-    result = agent.invoke({"messages": HumanMessage(content=query)})
+    result = agent.invoke({"messages": [
+        SystemMessage(content=f"You are a helpful assistant. Today's date is {date.today()}."),
+        HumanMessage(content=query),
+    ]})
     answer, sources = (
         result["structured_response"].answer,
         result["structured_response"].sources,
