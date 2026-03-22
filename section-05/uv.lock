@@ -789,8 +789,10 @@ dependencies = [
     { name = "black" },
     { name = "isort" },
     { name = "langchain" },
+    { name = "langchain-core" },
     { name = "langchain-ollama" },
     { name = "langchain-openai" },
+    { name = "langsmith" },
     { name = "python-dotenv" },
 ]
 
@@ -799,8 +801,10 @@ requires-dist = [
     { name = "black", specifier = ">=26.3.1" },
     { name = "isort", specifier = ">=8.0.1" },
     { name = "langchain", specifier = ">=1.2.13" },
+    { name = "langchain-core", specifier = ">=1.2.20" },
     { name = "langchain-ollama", specifier = ">=1.0.1" },
     { name = "langchain-openai", specifier = ">=1.1.11" },
+    { name = "langsmith", specifier = ">=0.7.22" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
 ]
 
